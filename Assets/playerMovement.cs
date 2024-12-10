@@ -9,6 +9,7 @@ public class playerMovement : MonoBehaviour
     private float Move;
 
     public float speed;
+    public float jump;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,5 +23,11 @@ public class playerMovement : MonoBehaviour
         Move = Input.GetAxisRaw("Horizontal");
 
         rb.velocity = new Vector2 (Move*speed, rb.velocity.y);
+
+        if (Input.GetButtonDown("Jump"))
+            {
+            rb.AddForce(new Vector2(rb.velocity.x, jump * 10));
+        }
     }
 }
+         
